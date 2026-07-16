@@ -40,7 +40,7 @@ const Navbar = () => {
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                 <button 
                   className="block px-4 py-2 text-sm font-['DM_Sans'] font-medium text-base leading-[140%] tracking-[0.2px] text-gray-600 w-full text-left hover:bg-gray-100 border-b border-gray-200"
-                  onClick={() => { navigate('/profile'); setIsDesktopMenuOpen(false); }}
+                  onClick={() => { navigate('/login'); setIsDesktopMenuOpen(false); }}
                 >
                   Profil Saya
                 </button>
@@ -98,7 +98,7 @@ const Navbar = () => {
           </button>
           <button 
             className="block px-4 py-2 text-base font-['DM_Sans'] font-medium leading-[140%] tracking-[0.2px] text-gray-600 w-full text-left hover:bg-gray-100 border-b border-gray-200"
-            onClick={() => { navigate('/profile'); setIsMobileMenuOpen(false); }}
+            onClick={() => { navigate('/login'); setIsMobileMenuOpen(false); }}
           >
             Profil Saya
           </button>
