@@ -232,7 +232,7 @@ const Home = () => {
       <CourseModal
         key={editingCourse ? editingCourse.id : 'new-course'}
         show={showCourseModal}
-        onClose={() => { setShowCourseModal(false); setEditingCourse(null); console.log("CourseModal onClose: editingCourse set to null"); }}
+        onClose={() => { setShowCourseModal(false); setEditingCourse(null); }}
         onSave={editingCourse ? handleUpdateCourse : handleAddCourse}
         course={editingCourse}
         categories={categories}
@@ -241,7 +241,7 @@ const Home = () => {
       <CategoryModal
         key={editingCategory ? editingCategory.id : 'new-category'}
         show={showCategoryModal}
-        onClose={() => { setShowCategoryModal(false); setEditingCategory(null); console.log("CategoryModal onClose: editingCategory set to null"); }}
+        onClose={() => { setShowCategoryModal(false); setEditingCategory(null); }}
         onSave={editingCategory ? handleUpdateCategory : handleAddCategory}
         category={editingCategory}
       />

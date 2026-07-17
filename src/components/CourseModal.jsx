@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactCrop, { centerCrop, makeAspectCrop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
-import PropTypes from 'prop-types';
 import Button from './Button';
 
 const initialState = {
@@ -26,7 +25,6 @@ const CourseModal = ({ show, onClose, onSave, course, categories }) => {
   const [avatarPreview, setAvatarPreview] = useState(null);
 
   const imgRef = useRef(null);
-  const avatarRef = useRef(null);
   const [crop, setCrop] = useState();
   const [completedCrop, setCompletedCrop] = useState(null);
   const [imageToCrop, setImageToCrop] = useState(null);
@@ -276,14 +274,6 @@ const CourseModal = ({ show, onClose, onSave, course, categories }) => {
       </div>
     </div>
   );
-};
-
-CourseModal.propTypes = {
-  show: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  course: PropTypes.object,
-  categories: PropTypes.array.isRequired,
 };
 
 export default CourseModal;
