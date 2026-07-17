@@ -161,7 +161,7 @@ const Home = () => {
             const allCategories = [{ id: 'all', name: 'Semua Kelas' }, ...categories];
             return (
               <div className="flex gap-0 overflow-x-auto lg:flex-row lg:gap-10 lg:overflow-x-visible">
-                {allCategories.map((category, index) => {
+                {allCategories?.map((category, index) => {
                   const isAll = category.name === 'Semua Kelas';
                   return (
                     <div 
@@ -200,7 +200,7 @@ const Home = () => {
 
           {/* Cards Grid */}
           <div className="flex flex-col gap-5 lg:grid lg:grid-cols-3 lg:gap-6">
-            {filteredCourses.map((course) => (
+            {filteredCourses?.map((course) => (
               <CardVideo
                 key={course.id}
                 id={course.id}
