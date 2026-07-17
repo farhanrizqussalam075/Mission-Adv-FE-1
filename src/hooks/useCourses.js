@@ -17,7 +17,10 @@ const useCourses = () => {
     setError(null);
     try {
       const data = await getCourses();
-      setCourses(Array.isArray(data) ? data : []);
+      const sortedData = Array.isArray(data)
+        ? [...data].sort((a, b) => b.id - a.id)
+        : [];
+      setCourses(sortedData);
     } catch (err) {
       setError(err.message);
     } finally {
