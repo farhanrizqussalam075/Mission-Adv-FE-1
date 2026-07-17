@@ -27,13 +27,16 @@ StarRating.propTypes = {
 const CardVideo = ({ 
   image, 
   title, 
+  description, 
   instructor, 
   role, 
   company, 
   rating, 
   reviewCount, 
   price,
-  avatar 
+  avatar,
+  onEdit,
+  onDelete
 }) => {
   return (
     <div className="w-full rounded-[10px] border border-[#3A35411F] p-[16px] md:p-[20px] bg-white flex flex-col md:gap-[16px]">
@@ -49,7 +52,7 @@ const CardVideo = ({
               {title}
             </h3>
             <p className="hidden md:block font-dm-sans font-medium text-[14px] leading-[140%] tracking-[0.2px] text-text-secondary line-clamp-2 md:text-[16px]">
-              Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik
+              {description}
             </p>
           </div>
           
@@ -64,13 +67,22 @@ const CardVideo = ({
                 {instructor}
               </span>
               <div className="flex items-center gap-[4px] flex-wrap">
-                <span className="font-dm-sans font-normal text-[12px] leading-[140%] tracking-[0.2px] text-text-secondary md:text-[14px]">
-                  {role}
-                </span>
-                <span className="hidden md:inline font-dm-sans font-normal text-[12px] leading-[140%] tracking-[0.2px] text-text-secondary md:text-[14px]">di</span>
-                <span className="hidden md:inline font-dm-sans font-bold text-[12px] leading-[140%] tracking-[0.2px] text-text-secondary md:text-[14px]">
-                  {company}
-                </span>
+                {role && (
+                  <span className="font-dm-sans font-normal text-[12px] leading-[140%] tracking-[0.2px] text-text-secondary md:text-[14px]">
+                    {role}
+                  </span>
+                )}
+                {role && company && (
+                  <span className="hidden md:inline font-dm-sans font-normal text-[12px] leading-[140%] tracking-[0.2px] text-text-secondary md:text-[14px]">di</span>
+                )}
+                {!role && company && (
+                  <span className="hidden md:inline font-dm-sans font-normal text-[12px] leading-[140%] tracking-[0.2px] text-text-secondary md:text-[14px]">di</span>
+                )}
+                {company && (
+                  <span className="hidden md:inline font-dm-sans font-bold text-[12px] leading-[140%] tracking-[0.2px] text-text-secondary md:text-[14px]">
+                    {company}
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -87,6 +99,10 @@ const CardVideo = ({
             {price}
           </span>
       </div>
+      <div className="flex justify-end gap-2 mt-4">
+        <button onClick={onEdit} className="text-blue-500 text-sm">Edit</button>
+        <button onClick={onDelete} className="text-red-500 text-sm">Hapus</button>
+      </div>
     </div>
   );
 };
@@ -100,7 +116,10 @@ CardVideo.propTypes = {
   rating: PropTypes.number.isRequired,
   reviewCount: PropTypes.number.isRequired,
   price: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired
+  avatar: PropTypes.string.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default CardVideo;
