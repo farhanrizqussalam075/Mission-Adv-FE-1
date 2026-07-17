@@ -17,7 +17,7 @@ const useCourses = () => {
     setError(null);
     try {
       const data = await getCourses();
-      setCourses(data);
+      setCourses(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message);
     } finally {
