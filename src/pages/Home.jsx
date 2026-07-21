@@ -248,7 +248,11 @@ const Home = () => {
 
       <ConfirmationModal
         show={showConfirmModal}
-        onClose={() => setShowConfirmModal(false)}
+        onClose={() => {
+          setShowConfirmModal(false);
+          courseToDelete.current = null;
+          categoryToDelete.current = null;
+        }}
         onConfirm={() => {
           if (courseToDelete.current) {
             handleDeleteCourse(courseToDelete.current);
