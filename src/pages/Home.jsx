@@ -253,13 +253,20 @@ const Home = () => {
           courseToDelete.current = null;
           categoryToDelete.current = null;
         }}
-        onConfirm={() => {
-          if (courseToDelete.current) {
-            handleDeleteCourse(courseToDelete.current);
-            courseToDelete.current = null;
-          } else if (categoryToDelete.current) {
-            handleDeleteCategory(categoryToDelete.current);
-            categoryToDelete.current = null;
+        onConfirm={async () => {
+          const currentCourseId = courseToDelete.current;
+          const currentCategoryId = categoryToDelete.current;
+
+          // Reset UI state terlebih dahulu agar modal langsung menghilang tanpa flashing
+          setShowConfirmModal(false);
+          courseToDelete.current = null;
+          categoryToDelete.current = null;
+
+          // Baru jalankan fungsi hapus setelahnya
+          if (currentCourseId) {
+            await handleDeleteCourse(currentCourseId);
+          } else if (currentCategoryId) {
+            await handleDeleteCategory(currentCategoryId);
           }
         }}
         message={courseToDelete.current ? "Apakah Anda yakin ingin menghapus course ini?" : "Apakah Anda yakin ingin menghapus kategori ini? Course yang terkait akan dipindahkan ke \"Semua Kelas\"."}
